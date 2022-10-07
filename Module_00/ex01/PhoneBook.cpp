@@ -3,12 +3,34 @@
 PhoneBook::PhoneBook(){index = 0;}
 PhoneBook::~PhoneBook(){}
 
+bool    checkEmpty(Contact _contact)
+{
+    if (_contact.getFirstName().empty())
+        return true;
+    else if (_contact.getLastName().empty())
+        return true;
+    else if (_contact.getNickname().empty())
+        return true;
+    else if (_contact.getPhoneNumber().empty())
+        return true;
+    else if (_contact.getDarkestSecret().empty())
+        return true;
+
+    return false;
+}
+
 void    PhoneBook::addContact()
 {
-    contacts[index].createContact();
-    index++;
-    if (index == 8)
-        index = 0;
+    Contact _contact;
+
+    _contact.createContact();
+    if (!checkEmpty(_contact))
+    {
+        contacts[index] = _contact;
+        index++;
+        if (index == 8)
+            index = 0;
+    }
 }
 
 int PhoneBook::searchContact()
@@ -47,9 +69,9 @@ void    PhoneBook::printContact(int i)
     std::cout << std::endl << "+-------------------------------------------+" << std::endl;
 }
 
-std::string &convertToString(const char *s)
+std::string &convertToString(const char *s, std::string &ss)
 {
-    std::string ss = "";
+    ss = "";
 
     if (s)
         while (*s)
@@ -62,12 +84,13 @@ void    PhoneBook::printPhoneBook()
 {
     std::cout << "+-----------------------------------------------------------------+" << std::endl;
     std::cout << "|";
-    printW10(convertToString("Index"));
-    printW10(convertToString("First name"));
-    printW10(convertToString("Last name"));
-    printW10(convertToString("Nickname"));
-    printW10(convertToString("Phone number"));
-    printW10(convertToString("Darkest secret"));
+    std::string ss;
+    printW10(convertToString("Index", ss));
+    printW10(convertToString("First name", ss));
+    printW10(convertToString("Last name", ss));
+    printW10(convertToString("Nickname", ss));
+    printW10(convertToString("Phone number", ss));
+    printW10(convertToString("Darkest secret", ss));
     std::cout << std::endl << "+-----------------------------------------------------------------+" << std::endl;
     for (int i = 0; i < 8; i++)
     {

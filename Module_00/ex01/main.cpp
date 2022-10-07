@@ -16,8 +16,8 @@ int main()
             phoneBook.addContact();
         else if (input == "SEARCH")
             phoneBook.printContact(phoneBook.searchContact());
-        // else if (input == "PRINT") //test
-        //     phoneBook.printPhoneBook();
+        else if (input == "PRINT") //test
+            phoneBook.printPhoneBook();
         else if (input == "EXIT")
             break;
         else

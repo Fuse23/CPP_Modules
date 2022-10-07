@@ -9,7 +9,7 @@ std::string &Contact::getNickname() { return nickname; }
 std::string &Contact::getPhoneNumber() { return phone_number; }
 std::string &Contact::getDarkestSecret() { return darkest_secret; }
 
-void    Contact::createContact()
+Contact &Contact::createContact()
 {
     std::cout << "Enter first name: ";
     std::cin >> first_name;
@@ -21,4 +21,6 @@ void    Contact::createContact()
     std::cin >> phone_number;
     std::cout << "Enter darkest secret: ";
     std::cin >> darkest_secret;
+
+    return *this;
 }

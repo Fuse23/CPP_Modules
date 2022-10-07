@@ -26,3 +26,7 @@ fclean:		clean
 			@$(RM) $(NAME)
 
 re:			fclaen all
+
+test:
+			./Account > test_logs.log
+			diff test_logs.log 19920104_091532.log
