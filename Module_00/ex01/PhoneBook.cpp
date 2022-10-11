@@ -3,46 +3,37 @@
 PhoneBook::PhoneBook(){index = 0;}
 PhoneBook::~PhoneBook(){}
 
-bool    checkEmpty(Contact _contact)
-{
-    if (_contact.getFirstName().empty())
-        return true;
-    else if (_contact.getLastName().empty())
-        return true;
-    else if (_contact.getNickname().empty())
-        return true;
-    else if (_contact.getPhoneNumber().empty())
-        return true;
-    else if (_contact.getDarkestSecret().empty())
-        return true;
-
-    return false;
-}
-
 void    PhoneBook::addContact()
 {
-    Contact _contact;
-
-    _contact.createContact();
-    if (!checkEmpty(_contact))
-    {
-        contacts[index] = _contact;
-        index++;
-        if (index == 8)
-            index = 0;
-    }
+    contacts[index].createContact();
+    index++;
+    if (index == 8)
+        index = 0;
 }
 
-int PhoneBook::searchContact()
+void    PhoneBook::searchContact()
 {
-    std::string input;
-    std::cout << "Enter nickname or first name: ";
-    std::cin >> input;
-    for (int i = 0; i < 8; i++)
-        if (contacts[i].getNickname() == input or contacts[i].getFirstName() == input)
-            return i;
+    if (contacts[0].getFirstName().empty())
+    {
+        std::cout << "Phonebook is empty!" << std::endl;
+        return ;
+    }
 
-    return -1;
+    int i = printPhoneBook();
+    int input;
+    std::cout << "Enter index: ";
+    std::cin >> input;
+
+    if (input > 0 && input < i + 1)
+    {
+        std::cout << "Firstname: " << contacts[input - 1].getFirstName() << std::endl;
+        std::cout << "Lastname: " << contacts[input - 1].getLastName() << std::endl;
+        std::cout << "Nickname: " << contacts[input - 1].getNickname() << std::endl;
+        std::cout << "Phone number: " << contacts[input - 1].getPhoneNumber() << std::endl;
+        std::cout << "Darkest secret: " << contacts[input - 1].getDarkestSecret() << std::endl;
+    }
+    else
+        std::cout << "Invalid index" << std::endl;
 }
 
 void    PhoneBook::printW10(std::string &s)
@@ -53,55 +44,24 @@ void    PhoneBook::printW10(std::string &s)
         std::cout << std::setw(10) << s << "|";
 }
 
-void    PhoneBook::printContact(int i)
+int PhoneBook::printPhoneBook()
 {
-    if (i == -1)
-    {
-        std::cout << "No such contact was found" << std::endl;
-        return ;
-    }
     std::cout << "+-------------------------------------------+" << std::endl;
-    std::cout << "|" << std::setw(10) << i + 1;
-    std::cout << "|";
-    printW10(contacts[i].getFirstName());
-    printW10(contacts[i].getLastName());
-    printW10(contacts[i].getNickname());
-    std::cout << std::endl << "+-------------------------------------------+" << std::endl;
-}
+    std::cout << "|  Index   |Firstname | Lastname | Nickname |" << std::endl;
+    std::cout << "+-------------------------------------------+" << std::endl;
 
-std::string &convertToString(const char *s, std::string &ss)
-{
-    ss = "";
-
-    if (s)
-        while (*s)
-            ss += *s++;
-    
-    return ss;
-}
-
-void    PhoneBook::printPhoneBook()
-{
-    std::cout << "+-----------------------------------------------------------------+" << std::endl;
-    std::cout << "|";
-    std::string ss;
-    printW10(convertToString("Index", ss));
-    printW10(convertToString("First name", ss));
-    printW10(convertToString("Last name", ss));
-    printW10(convertToString("Nickname", ss));
-    printW10(convertToString("Phone number", ss));
-    printW10(convertToString("Darkest secret", ss));
-    std::cout << std::endl << "+-----------------------------------------------------------------+" << std::endl;
-    for (int i = 0; i < 8; i++)
+    int i;
+    for (i = 0; i < 8; i++)
     {
-        std::cout << "|";
-        std::cout << std::setw(10) << i + 1;
-        std::cout << "|";
+        if (contacts[i].getFirstName().empty())
+            break;
+        std::cout << "|" << std::setw(10) << i + 1 << "|";
         printW10(contacts[i].getFirstName());
         printW10(contacts[i].getLastName());
         printW10(contacts[i].getNickname());
-        printW10(contacts[i].getPhoneNumber());
-        printW10(contacts[i].getDarkestSecret());
-        std::cout << std::endl << "+-----------------------------------------------------------------+" << std::endl;
+        std::cout << std::endl;
     }
+    std::cout << "+-------------------------------------------+" << std::endl;
+
+    return i;
 }

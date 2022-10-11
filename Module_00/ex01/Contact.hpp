@@ -16,7 +16,7 @@ private:
 public:
     Contact();
     ~Contact();
-    Contact     &createContact();
+    void        createContact();
     std::string &getFirstName();
     std::string &getLastName();
     std::string &getNickname();

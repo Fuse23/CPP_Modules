@@ -7,7 +7,6 @@ int main()
     std::string input;
 
     std::cout << "Available cmd: ADD, SEARCH, EXIT." << std::endl;
-    // std::cout << "Available cmd: ADD, SEARCH, EXIT, PRINT." << std::endl; //test
 
     while (1)
     {
@@ -15,9 +14,7 @@ int main()
         if (input == "ADD")
             phoneBook.addContact();
         else if (input == "SEARCH")
-            phoneBook.printContact(phoneBook.searchContact());
-        else if (input == "PRINT") //test
-            phoneBook.printPhoneBook();
+            phoneBook.searchContact();
         else if (input == "EXIT")
             break;
         else

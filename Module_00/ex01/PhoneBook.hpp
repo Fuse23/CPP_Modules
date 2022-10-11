@@ -17,9 +17,8 @@ public:
     PhoneBook();
     ~PhoneBook();
     void    addContact();
-    int     searchContact();
-    void    printContact(int i);
-    void    printPhoneBook();
+    void    searchContact();
+    int     printPhoneBook();
 };
 
 
