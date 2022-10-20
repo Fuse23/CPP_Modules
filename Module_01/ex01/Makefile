@@ -5,15 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: falarm <falarm@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/20 20:49:32 by falarm            #+#    #+#              #
-#    Updated: 2022/10/20 20:49:35 by falarm           ###   ########.fr        #
+#    Created: 2022/10/20 20:50:09 by falarm            #+#    #+#              #
+#    Updated: 2022/10/20 20:50:10 by falarm           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Zombie
+NAME	=	ZombieHorde
 
-SOURCES	=	Zombie.cpp	newZombie.cpp	randomChump.cpp	\
-			main.cpp
+SOURCES	=	Zombie.cpp	zombieHorde.cpp		main.cpp
 
 OBJECTS	=	$(SOURCES:.cpp=.o)
 

@@ -5,30 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: falarm <falarm@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/20 20:49:32 by falarm            #+#    #+#              #
-#    Updated: 2022/10/20 20:49:35 by falarm           ###   ########.fr        #
+#    Created: 2022/10/20 20:50:41 by falarm            #+#    #+#              #
+#    Updated: 2022/10/20 20:50:46 by falarm           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Zombie
+NAME	=	String
 
-SOURCES	=	Zombie.cpp	newZombie.cpp	randomChump.cpp	\
-			main.cpp
+SOURCE	=	main.cpp
 
-OBJECTS	=	$(SOURCES:.cpp=.o)
-
-HEADER	=	Zombie.hpp
+OBJECTS	=	$(SOURCE:.cpp=.o)
 
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
 RM		=	rm -rf
 
-.PHONY:		all		clean	fclean	re
+.PHONY	=	all	clean	fclean	re
 
 all:		$(NAME)
 
-$(NAME):	$(OBJECTS) $(HEADER)
-			$(CC) $(FLAGS) $(OBJECTS) -I. -o $(NAME)
+$(NAME):	$(OBJECTS)
+			$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
 
 clean:
 			$(RM) $(OBJECTS)

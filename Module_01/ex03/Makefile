@@ -5,19 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: falarm <falarm@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/20 20:49:32 by falarm            #+#    #+#              #
-#    Updated: 2022/10/20 20:49:35 by falarm           ###   ########.fr        #
+#    Created: 2022/10/20 20:52:49 by falarm            #+#    #+#              #
+#    Updated: 2022/10/20 20:52:50 by falarm           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	Zombie
+NAME	=	HumanWeapon
 
-SOURCES	=	Zombie.cpp	newZombie.cpp	randomChump.cpp	\
-			main.cpp
+SOURCES	=	Weapon.cpp	HumanA.cpp	HumanB.cpp	main.cpp
+
+HEADERS	=	Weapon.hpp	HumanA.hpp	HumanB.hpp
 
 OBJECTS	=	$(SOURCES:.cpp=.o)
-
-HEADER	=	Zombie.hpp
 
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -27,7 +26,7 @@ RM		=	rm -rf
 
 all:		$(NAME)
 
-$(NAME):	$(OBJECTS) $(HEADER)
+$(NAME):	$(OBJECTS) $(HEADERS)
 			$(CC) $(FLAGS) $(OBJECTS) -I. -o $(NAME)
 
 clean:

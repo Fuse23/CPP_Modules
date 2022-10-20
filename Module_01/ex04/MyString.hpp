@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   MyString.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 20:49:40 by falarm            #+#    #+#             */
-/*   Updated: 2022/10/20 20:49:41 by falarm           ###   ########.fr       */
+/*   Created: 2022/10/20 21:04:56 by falarm            #+#    #+#             */
+/*   Updated: 2022/10/20 21:11:01 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef MYSTRING_HPP
+# define MYSTRING_HPP
 
-void    randomChump(std::string name) {
-    Zombie  zombie(name);
-    zombie.announce();
-}
+#include <string>
+
+class MyString
+{
+private:
+    std::string _string;
+
+public:
+    MyString(std::string &s);
+    ~MyString();
+    std::string &getString();
+    void    replace(std::string s1, std::string s2);
+};
+
+#endif

@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 20:49:40 by falarm            #+#    #+#             */
-/*   Updated: 2022/10/20 20:49:41 by falarm           ###   ########.fr       */
+/*   Created: 2022/10/20 20:50:06 by falarm            #+#    #+#             */
+/*   Updated: 2022/10/20 20:50:07 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void    randomChump(std::string name) {
-    Zombie  zombie(name);
-    zombie.announce();
+int main() {
+    Zombie  zombieNoName;
+    zombieNoName.announce();
+
+    Zombie  zombieName("Dasha");
+    zombieName.announce();
+
+    Zombie *hordeZombie = zombieHorde(5, "LOHI");
+
+    for (int i = 0; i < 5; i++) {
+        hordeZombie[i].announce();
+    }
+
+    Zombie  zombieTest("test");
+    zombieTest.announce();
+
+    for (int i = 0; i < 5; i++) {
+        hordeZombie[i].announce();
+    }
+
+    delete [] hordeZombie;
 }
