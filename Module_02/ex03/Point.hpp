@@ -6,7 +6,7 @@
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 22:06:33 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/20 22:23:19 by falarm           ###   ########.fr       */
+/*   Updated: 2022/11/22 22:07:14 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
     Fixed   getY( void ) const;
 
     Point   &operator=( const Point &point );
-
 
     bool    operator==( const Point &point );
 };

@@ -5,7 +5,7 @@ FLAGS	=	-Wall -Wextra -Werror
 
 RM		=	rm -f
 
-SOURCES	=	Fixed.cpp	main.cpp
+SOURCES	=	Fixed.cpp	Point.cpp	bsp.cpp		main.cpp
 
 OBJECTS	=	$(SOURCES:.cpp=.o)
 
