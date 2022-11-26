@@ -1,0 +1,27 @@
+NAME	=	animals
+
+CC		=	c++
+FLAGS	=	-Wall -Wextra -Werror
+
+RM		=	rm -f
+
+SOURCES	=	Animal.cpp	Cat.cpp	Dog.cpp		\
+			WrongAnimal.cpp	WrongCat.cpp	\
+			main.cpp
+
+OBJECTS	=	$(SOURCES:.cpp=.o)
+
+all:		$(NAME)
+
+$(NAME):	$(OBJECTS)
+			$(CC) $(FLAGS) $(OBJECTS) -I. -o $(NAME)
+
+clean:
+			$(RM) $(OBJECTS)
+
+fclean:		clean
+			$(RM) $(NAME)
+
+re:			fclean all
+
+.PHONY:		all clean fclean re
