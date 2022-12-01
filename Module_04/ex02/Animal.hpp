@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Created: 2022/11/26 20:24:38 by falarm            #+#    #+#             */
+/*   Updated: 2022/11/26 22:27:00 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP__
-# define __CAT_HPP__
+#ifndef __ANIMAL_HPP__
+# define __ANIMAL_HPP__
 
-#include "Animal.hpp"
+#include <iostream>
+#include <string>
 
-class Cat : public Animal {
+class Animal {
+
+protected:
+    std::string _type;
 
 public:
-    Cat();
-    Cat( const Cat &cat );
+    Animal();
+    Animal( const Animal &animal );
 
-    ~Cat();
+    virtual ~Animal();
 
-    Cat &operator=( const Cat &cat );
+    Animal  &operator=( const Animal &animal );
 
-    virtual void    makeSound( void ) const;
+    virtual void    makeSound( void ) const = 0;
+    std::string     getType( void ) const;
 };
 
-#endif // __CAT_HPP__
+#endif // __ANIMAL_HPP__

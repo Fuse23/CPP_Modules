@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Updated: 2022/11/30 22:41:19 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP__
-# define __CAT_HPP__
+#ifndef __DOG_HPP__
+# define __DOG_HPP__
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Cat : public Animal {
+class Dog : public Animal {
+
+private:
+    Brain   *_brain;
 
 public:
-    Cat();
-    Cat( const Cat &cat );
+    Dog();
+    Dog( const Dog &dog );
 
-    ~Cat();
+    ~Dog();
 
-    Cat &operator=( const Cat &cat );
+    Dog &operator=( const Dog &dog );
 
     virtual void    makeSound( void ) const;
 };
 
-#endif // __CAT_HPP__
+#endif // __DOG_HPP__

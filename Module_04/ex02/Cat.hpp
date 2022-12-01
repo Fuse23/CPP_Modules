@@ -6,7 +6,7 @@
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Updated: 2022/11/30 22:34:02 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 # define __CAT_HPP__
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal {
+
+private:
+    Brain   *_brain;
 
 public:
     Cat();

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Created: 2022/11/26 22:34:06 by falarm            #+#    #+#             */
+/*   Updated: 2022/12/01 19:16:59 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP__
-# define __CAT_HPP__
+#ifndef __ICHARACTER_HPP__
+# define __ICHARACTER_HPP__
 
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Cat : public Animal {
+class ICharacter {
 
 public:
-    Cat();
-    Cat( const Cat &cat );
+    virtual ~ICharacter() {}
 
-    ~Cat();
-
-    Cat &operator=( const Cat &cat );
-
-    virtual void    makeSound( void ) const;
+    virtual std::string const   &getName( void ) const = 0;
+    virtual void                equip( AMateria* materia ) = 0;
+    virtual void                unequip( int idx ) = 0;
+    virtual void                use( int idx, ICharacter & target ) = 0;
 };
 
-#endif // __CAT_HPP__
+#endif // __ICHARACTER_HPP__

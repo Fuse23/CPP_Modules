@@ -6,7 +6,7 @@
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 21:13:43 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 22:53:48 by falarm           ###   ########.fr       */
+/*   Updated: 2022/11/30 22:54:57 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int main( void ) {
     const Animal* i = new Cat();
     std::cout << "---------Create copy Cat---------" << std::endl;
     const Animal* copy_i = new Cat(*(Cat*)i); // создание копии кота
-    std::cout << "---------Create one Animal---------" << std::endl;
-    const Animal* animal = new Animal();
-
+    // std::cout << "---------Create one Animal---------" << std::endl;
+    // const Animal* animal = new Animal();
+    
     std::cout << std::endl;
 
     std::cout << "---------Make sound Dog---------" << std::endl;
     j->makeSound();
     std::cout << "---------Make sound Cat---------" << std::endl;
     i->makeSound();
-    std::cout << "---------Make sound Animal---------" << std::endl;
-    animal->makeSound();
+    // std::cout << "---------Make sound Animal---------" << std::endl;
+    // animal->makeSound();
 
     std::cout << std::endl;
 
@@ -41,8 +41,6 @@ int main( void ) {
     delete j;
     std::cout << "---------Delete Cat!------------" << std::endl;
     delete i;
-    std::cout << "---------Delete Animal---------" << std::endl;
-    delete animal;
 
     return 0;
 }

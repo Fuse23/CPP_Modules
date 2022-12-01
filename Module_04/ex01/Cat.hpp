@@ -6,7 +6,7 @@
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/26 21:44:49 by falarm           ###   ########.fr       */
+/*   Updated: 2022/11/30 22:49:35 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 
     Cat &operator=( const Cat &cat );
 
-    void    makeSound( void ) const;
+    virtual void    makeSound( void ) const;
 };
 
 #endif // __CAT_HPP__

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Created: 2022/11/26 21:33:59 by falarm            #+#    #+#             */
+/*   Updated: 2022/11/26 21:42:16 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP__
-# define __CAT_HPP__
+#ifndef __BRAIN_HPP__
+# define __BRAIN_HPP__
 
-#include "Animal.hpp"
+#include <iostream>
+#include <string>
 
-class Cat : public Animal {
+class Brain {
+
+private:
+    std::string _ideas[100];
 
 public:
-    Cat();
-    Cat( const Cat &cat );
+    Brain();
+    Brain( const Brain &brain );
 
-    ~Cat();
+    ~Brain();
 
-    Cat &operator=( const Cat &cat );
-
-    virtual void    makeSound( void ) const;
+    Brain   &operator=( const Brain &brain );
 };
 
-#endif // __CAT_HPP__
+#endif // __BRAIN_HPP__

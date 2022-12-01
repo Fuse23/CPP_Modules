@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: falarm <falarm@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/26 20:40:20 by falarm            #+#    #+#             */
-/*   Updated: 2022/11/30 23:11:17 by falarm           ###   ########.fr       */
+/*   Created: 2022/12/01 19:07:38 by falarm            #+#    #+#             */
+/*   Updated: 2022/12/01 19:18:36 by falarm           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CAT_HPP__
-# define __CAT_HPP__
+#ifndef __CURE_HPP__
+# define __CURE_HPP__
 
-#include "Animal.hpp"
+#include "AMateria.hpp"
 
-class Cat : public Animal {
+class Cure : public AMateria {
 
 public:
-    Cat();
-    Cat( const Cat &cat );
+    Cure();
+    Cure( const Cure & cure );
 
-    ~Cat();
+    Cure    &operator=( const Cure & cure );
 
-    Cat &operator=( const Cat &cat );
+    ~Cure();
 
-    virtual void    makeSound( void ) const;
+    virtual AMateria*   clone( void ) const;
+    virtual void        use( ICharacter& target );
 };
 
-#endif // __CAT_HPP__
+#endif // __CURE_HPP__
