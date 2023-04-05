@@ -35,7 +35,7 @@ bool isValidDate(std::string const &date) {
     ss >> std::get_time(&timeinfo, "%Y-%m-%d");
 
     if (ss.fail()) {
-        std::cerr << "Error: bad input => " << date << std::endl;
+        std::cerr << "Error: bad input data => " << date << std::endl;
         return false;
     }
 
@@ -86,16 +86,16 @@ void BitcoinExchange::parsing(std::string const &fileNmae, const char delimiter)
 
             if (!isValidDate(date) || isValidValue(btcValue, delimiter) < 0)
                 continue;
+
+            if (delimiter == ',')
+                this->_dict.insert(std::pair<std::string, float>(date, btcValue));
+            else {
+            // if (isValidValue(btcValue, delimiter) < 0)
+            //     continue;
+                outputResults(date, btcValue);
+            }
         } else
             std::cerr << "Error: bad input => " << line << std::endl;
-
-        if (delimiter == ',')
-            this->_dict.insert(std::pair<std::string, float>(date, btcValue));
-        else {
-            if (isValidValue(btcValue, delimiter) < 0)
-                continue;
-            outputResults(date, btcValue);
-        }
     }
 
     in.close();
