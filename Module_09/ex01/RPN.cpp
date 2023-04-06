@@ -13,50 +13,72 @@ RPN &RPN::operator=(RPN const &copy) {
 
 std::stack<float> const &RPN::getNumbers() const { return this->_numbers; }
 
-void RPN::calculate(std::string const &input) {
-    for (size_t i = 0; i < input.size(); i++) {
-        char c = input[i];
+bool RPN::isOperator(std::string const &s) {
+    return (s == "+" || s == "-" || s == "*" || s == "/");
+}
 
-        if (c == ' ')
-            continue;
-        else if (std::isdigit(c))
-            this->_numbers.push(c - '0');
-        else if (c == '+' && this->_numbers.size() >= 2) {
-            float x = this->_numbers.top();
-            this->_numbers.pop();
+float RPN::performOperator(const float x, const float y, std::string const &_operator) {
+    float result;
+
+    switch (_operator[0]) {
+    case '+':
+        result = x + y;
+        break;
+    case '-':
+        result = x - y;
+        break;
+    case '*':
+        result = x * y;
+        break;
+    case '/':
+        if (y != 0)
+            result = x / y;
+        else {
+            std::cout << "Error: division by 0." << std::endl;
+            exit(-1);
+        }
+        break;
+    default:
+        std::cout << "Error: bad input operator." << std::endl;
+        exit(-2);
+        break;
+    }
+
+    // std::cout << x << _operator << y << " = " << result << std::endl;
+
+    return result;
+}
+
+void RPN::calculate(std::string const &input) {
+    std::istringstream ss(input);
+    std::string token;
+
+    while (ss >> token && token.length() == 1) {
+        if (std::isdigit(token[0]))
+            this->_numbers.push(std::stoi(token));
+        else if (isOperator(token)) {
+            if (this->_numbers.size() < 2) {
+                std::cout << "Error: bad input." << std::endl;
+                return;
+            }
+
             float y = this->_numbers.top();
             this->_numbers.pop();
-            this->_numbers.push(x + y);
-        } else if (c == '-' && this->_numbers.size() >= 2) {
+
             float x = this->_numbers.top();
             this->_numbers.pop();
-            float y = this->_numbers.top();
-            this->_numbers.pop();
-            this->_numbers.push(x - y);
-        } else if (c == '*' && this->_numbers.size() >= 2) {
-            float x = this->_numbers.top();
-            this->_numbers.pop();
-            float y = this->_numbers.top();
-            this->_numbers.pop();
-            this->_numbers.push(x * y);
-        } else if (c == '/' && this->_numbers.size() >= 2) {
-            float x = this->_numbers.top();
-            this->_numbers.pop();
-            float y = this->_numbers.top();
-            this->_numbers.pop();
-            this->_numbers.push(x / y);
+
+            this->_numbers.push(performOperator(x, y, token));
         } else {
-            std::cout << "Error" << std::endl;
+            std::cout << "Error: bad input." << std::endl;
             return;
         }
     }
 
-    if (this->_numbers.size() == 1) {
-        float result = this->_numbers.top();
-        this->_numbers.pop();
-
-        std::cout << result << std::endl;
-    } else {
-        std::cout << "Error" << std::endl;
+    if (this->_numbers.size() != 1) {
+        std::cout << "Error: bad input." << std::endl;
+        return;
     }
+
+    std::cout << this->_numbers.top() << std::endl;
 }

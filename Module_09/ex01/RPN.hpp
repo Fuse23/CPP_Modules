@@ -2,6 +2,7 @@
 # define __RPN_HPP__
 
 # include <iostream>
+# include <sstream>
 # include <string>
 # include <stack>
 
@@ -18,6 +19,8 @@ public:
 
     std::stack<float> const &getNumbers() const;
 
+    bool isOperator(std::string const &s);
+    float performOperator(const float x, const float y, std::string const &_operator);
     void calculate(std::string const &input);
 };
 
